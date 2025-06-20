@@ -4,7 +4,7 @@ Sobre o Projeto
 
 Este projeto é uma aplicação feita com React e TypeScript para criar e gerenciar portfólios pessoais ou profissionais!
 
-Os dados ficam salvos no navegador usando o localStorage, assim não precisa de banco de dados ou servidor (Se não tiver usuários que possam ver os portfólios dos outros).
+Os dados ficam salvos no navegador usando o localStorage, assim não precisa de banco de dados ou servidor (Se não tiver usuários que possam ver os portfólios dos outros né).
 
 A navegação é feita com React Router, deixando o site rápido e sem recarregar as páginas.
 
