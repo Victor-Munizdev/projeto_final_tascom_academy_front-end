@@ -24,9 +24,10 @@ export default function App({ Component, pageProps }: AppProps) {
     return (
       <>
         <Head>
-          <title>Portfolio Project</title>
-          <meta name="description" content="Sistema de portfólios" />
+          <title>Plataforma de Portfólios</title>
+          <meta name="description" content="Plataforma de portfólios" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link rel="icon" href="/logo.png" />
         </Head>
         <div style={{
           display: 'flex',
@@ -44,12 +45,13 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <Head>
-        <title>Portfolio Project</title>
-        <meta name="description" content="Sistema de portfólios" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
-      </Head>
+        <Head>
+          <title>Plataforma de Portfólios</title>
+          <meta name="description" content="Plataforma de portfólios" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
+          <link rel="icon" href="/logo.png" />
+        </Head>
       <Component {...pageProps} />
     </>
   )

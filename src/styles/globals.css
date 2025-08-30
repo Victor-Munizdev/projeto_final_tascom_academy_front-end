@@ -1,16 +1,3 @@
-/* Input de telefone menor nas telas pequenas */
-#phone {
-  max-width: 260px;
-  padding: 10px;
-}
-
-@media (max-width: 600px) {
-  #phone {
-    max-width: 180px;
-    font-size: 0.95rem;
-    padding: 8px;
-  }
-}
 
 * {
   margin: 0;
