@@ -68,7 +68,7 @@ export class PortfolioService {
 
       // Aplicar paginação
       const page = filters.page || 1
-      const limit = Math.min(filters.limit || 10, 100) // Máximo 100 por página
+      const limit = Math.min(filters.limit || 10, 100) 
       const from = (page - 1) * limit
       const to = from + limit - 1
 
@@ -87,7 +87,7 @@ export class PortfolioService {
         limit
       }
 
-      return this.createSuccessResponse(response, 'Portfólios buscados com sucesso')
+      return this.createSuccessResponse(response, 'Portifólios buscados com sucesso')
     } catch (error) {
       throw new Error(`Erro no serviço: ${error instanceof Error ? error.message : 'Erro desconhecido'}`)
     }
