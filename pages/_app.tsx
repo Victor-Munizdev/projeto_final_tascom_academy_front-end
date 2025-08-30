@@ -16,12 +16,10 @@ export default function App({ Component, pageProps }: AppProps) {
       setIsLoading(false)
     }, 100)
 
-    console.log('App carregado - CSS global importado')
 
     return () => clearTimeout(timer)
   }, [])
 
-  // Mostrar loading enquanto não estiver no cliente
   if (!isClient || isLoading) {
     return (
       <>

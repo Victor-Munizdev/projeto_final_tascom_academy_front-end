@@ -1,5 +1,3 @@
-// DTOs (Data Transfer Objects) para validação e tipagem
-
 export interface CreatePortfolioDto {
   name: string
   email?: string
@@ -56,7 +54,6 @@ export interface ApiErrorResponseDto {
   timestamp: string
 }
 
-// Tipos para filtros e paginação
 export interface PortfolioFiltersDto {
   search?: string
   skills?: string[]
@@ -66,7 +63,6 @@ export interface PortfolioFiltersDto {
   sortOrder?: 'asc' | 'desc'
 }
 
-// Tipos para estatísticas
 export interface PortfolioStatsDto {
   total: number
   withEmail: number

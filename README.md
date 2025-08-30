@@ -1,88 +1,67 @@
-# 📚 Sistema de Portfólios
 
-Um sistema completo para gerenciamento de portfólios profissionais, desenvolvido com Next.js, React, TypeScript e Supabase.
+# � Sistema de Portfólios Profissionais
 
-## ✨ Funcionalidades
+Um sistema completo, moderno e responsivo para criar, editar, visualizar e gerenciar portfólios profissionais. Desenvolvido com Next.js, React, TypeScript e Supabase.
 
-### 🏠 **Página Inicial**
-- Lista todos os portfólios cadastrados
-- Busca e filtragem por nome e habilidades
-- Interface responsiva e moderna
-- Cards com preview das informações
 
-### ➕ **Criar Portfólio**
-- Formulário completo para cadastro
-- Validação de campos obrigatórios
-- Interface intuitiva e amigável
-- Upload de informações profissionais
+## ✨ Funcionalidades Principais
 
-### 👁️ **Visualizar Portfólio**
-- Página detalhada com todas as informações
-- Layout organizado por seções
-- Exibição de habilidades em tags
-- Informações de contato destacadas
 
-### ✏️ **Editar Portfólio**
-- Formulário de edição pré-preenchido
-- Validação em tempo real
-- Interface consistente com criação
-- Navegação intuitiva
+- Listagem, busca e filtragem de portfólios
+- Cadastro e edição com validação de dados
+- Visualização detalhada e estilizada
+- Exclusão com confirmação
+- Documentação interativa da API (Swagger)
+- Layout 100% responsivo (mobile, tablet, desktop)
 
-### 🗑️ **Excluir Portfólio**
-- Confirmação antes da exclusão
-- Feedback visual para o usuário
-- Atualização automática da lista
-
-### 📚 **Documentação da API**
-- Interface Swagger completa
-- Teste de endpoints integrado
-- Documentação automática
-- Design moderno e responsivo
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **Frontend**: Next.js 14, React 18, TypeScript
-- **Backend**: Next.js API Routes
-- **Banco de Dados**: Supabase (PostgreSQL)
-- **Estilização**: CSS Modules + CSS Custom Properties
-- **Documentação**: Swagger/OpenAPI
-- **Roteamento**: React Router DOM
+- **Frontend:** Next.js 14, React 18, TypeScript
+- **Backend:** Next.js API Routes
+- **Banco de Dados:** Supabase (PostgreSQL)
+- **Estilização:** CSS moderno e responsivo
+- **Documentação:** Swagger/OpenAPI
 
-## 🚀 Como Executar
+
+## ▶️ Como rodar o projeto localmente
+
 
 ### Pré-requisitos
 - Node.js 18+ (recomendado 20+)
 - npm ou yarn
-- Conta no Supabase
+- Conta gratuita no Supabase
 
-### Instalação
 
-1. **Clone o repositório**
+### Instalação e uso
+
+1. **Clone o repositório:**
    ```bash
-   git clone <url-do-repositorio>
-   cd ProjetoFinal-front-end
+   git clone https://github.com/Victor-Munizdev/projeto_final_tascom_academy_front-end
+   cd projeto_final_tascom_academy_front-end
    ```
 
-2. **Instale as dependências**
+2. **Instale as dependências:**
    ```bash
    npm install
    ```
 
-3. **Configure o Supabase**
+3. **Configure o Supabase:**
    - Crie um projeto no [Supabase](https://supabase.com)
-   - Configure as variáveis de ambiente no arquivo `lib/supabase.ts`
-   - Crie a tabela `portfolios` com a estrutura adequada
+   - No painel do Supabase, crie a tabela `portfolios` (veja estrutura abaixo)
+   - Copie a URL e a chave anônima do Supabase e configure no arquivo `lib/supabase.ts`
 
-4. **Execute o projeto**
+4. **Execute o projeto:**
    ```bash
    npm run dev
    ```
 
-5. **Acesse a aplicação**
-   - Frontend: http://localhost:3000
-   - API Docs: http://localhost:3000/api-docs
+5. **Acesse:**
+   - Aplicação: http://localhost:3000
+   - Documentação da API: http://localhost:3000/api-docs
 
-## 📋 Estrutura do Projeto
+
+## � Estrutura do Projeto
 
 ```
 ├── pages/
@@ -94,18 +73,16 @@ Um sistema completo para gerenciamento de portfólios profissionais, desenvolvid
 │   └── api-docs.tsx        # Documentação da API
 ├── src/
 │   ├── components/         # Componentes React
-│   ├── pages/             # Páginas da aplicação
-│   ├── styles/            # Estilos CSS
-│   ├── utils/             # Utilitários
-│   ├── App.tsx            # Componente principal
-│   └── main.tsx           # Ponto de entrada
+│   ├── styles/            # Estilos globais
+│   ├── utils/             # Funções utilitárias
 ├── lib/
 │   ├── supabase.ts        # Configuração do Supabase
 │   └── init-supabase.ts   # Inicialização do banco
 └── public/                # Arquivos estáticos
 ```
 
-## 🔌 API Endpoints
+
+## 🔌 Endpoints da API
 
 ### Portfólios
 - `GET /api/portfolios` - Lista todos os portfólios
@@ -118,7 +95,8 @@ Um sistema completo para gerenciamento de portfólios profissionais, desenvolvid
 - `GET /api/swagger` - Especificação OpenAPI
 - `GET /api-docs` - Interface da documentação
 
-## 🎨 Interface
+
+## 🎨 Interface & Design
 
 ### Design System
 - **Cores**: Gradientes modernos com roxo e azul
@@ -133,7 +111,8 @@ Um sistema completo para gerenciamento de portfólios profissionais, desenvolvid
 - **PortfolioDetails**: Página de detalhes
 - **SearchBar**: Busca e filtragem
 
-## 🔧 Configuração do Banco
+
+## �️ Configuração do Banco (Supabase)
 
 ### Estrutura da Tabela `portfolios`
 
@@ -173,6 +152,7 @@ CREATE POLICY "Allow public delete" ON portfolios
 FOR DELETE USING (true);
 ```
 
+
 ## 📱 Responsividade
 
 A aplicação é totalmente responsiva e funciona em:
@@ -180,6 +160,7 @@ A aplicação é totalmente responsiva e funciona em:
 - 📱 Tablets
 - 💻 Desktops
 - 🖥️ Telas grandes
+
 
 ## 🚀 Deploy
 
@@ -194,7 +175,8 @@ A aplicação é totalmente responsiva e funciona em:
 - Heroku
 - AWS Amplify
 
-## 🤝 Contribuição
+
+## 🤝 Como contribuir
 
 1. Fork o projeto
 2. Crie uma branch para sua feature
@@ -202,13 +184,16 @@ A aplicação é totalmente responsiva e funciona em:
 4. Push para a branch
 5. Abra um Pull Request
 
+
 ## 📄 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
 
+
 ## 👨‍💻 Autor
 
 Desenvolvido como projeto final de curso.
+
 
 ## 📞 Suporte
 

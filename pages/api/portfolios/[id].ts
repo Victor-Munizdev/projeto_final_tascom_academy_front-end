@@ -218,16 +218,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
   } catch (error) {
     console.error('Erro na API de portfólio por ID:', error)
-    
     const errorMessage = error instanceof Error ? error.message : 'Erro interno do servidor'
     const statusCode = errorMessage.includes('não encontrado') ? 404 : 
                       errorMessage.includes('inválido') ? 400 : 500
-
+    const validationErrors = (error as any).validationErrors || undefined;
     res.status(statusCode).json({
       success: false,
       error: statusCode === 404 ? 'NOT_FOUND' : 
              statusCode === 400 ? 'VALIDATION_ERROR' : 'INTERNAL_ERROR',
       message: errorMessage,
+      validationErrors,
       timestamp: new Date().toISOString()
     })
   }

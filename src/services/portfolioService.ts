@@ -161,7 +161,10 @@ export class PortfolioService {
       const validationData = { id, ...sanitizedData }
       const validationErrors = validateUpdatePortfolio(validationData)
       if (validationErrors.length > 0) {
-        throw new Error('Dados inválidos')
+        console.error('Erros de validação ao atualizar portfólio:', validationErrors)
+        const error = new Error('Dados inválidos') as any;
+        error.validationErrors = validationErrors;
+        throw error;
       }
 
       // Verificar se o portfólio existe

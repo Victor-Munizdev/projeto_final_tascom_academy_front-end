@@ -18,7 +18,7 @@ export default function Header() {
     }}>
   <a href="/" style={{ fontWeight: 700, color: '#4a5568', textDecoration: 'none', fontSize: '1.08rem', letterSpacing: 0.2 }}>Início</a>
       <span style={{ color: '#cbd5e0', fontSize: '1.08rem' }}>|</span>
-  <a href="/create" style={{ fontWeight: 700, color: '#4a5568', textDecoration: 'none', fontSize: '1.08rem', letterSpacing: 0.2 }}>Novo Portfólio</a>
+  <a href="/PortfolioForm" style={{ fontWeight: 700, color: '#4a5568', textDecoration: 'none', fontSize: '1.08rem', letterSpacing: 0.2 }}>Novo Portfólio</a>
       <span style={{ color: '#cbd5e0', fontSize: '1.08rem' }}>|</span>
       <a href="/api-docs" target="_blank" rel="noopener noreferrer" style={{ color: '#667eea', textDecoration: 'none', fontWeight: 700, fontSize: '1.08rem', display: 'flex', alignItems: 'center', gap: '0.3rem', letterSpacing: 0.2 }}>
         <span role="img" aria-label="API Docs">📚</span> API Docs

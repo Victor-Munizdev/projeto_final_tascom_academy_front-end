@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-// Função para destacar sintaxe JSON
 function syntaxHighlightJson(json: any) {
   if (typeof json !== 'string') {
     json = JSON.stringify(json, null, 2);
@@ -142,28 +141,7 @@ const ApiEndpointModal: React.FC<ApiEndpointModalProps> = ({ open, onClose, endp
         </p>
         <p>{endpoint.description}</p>
 
-        {isPortfolioGet ? (
-          <>
-            <div style={{ marginBottom: 8 }}>
-              <label>Skills: </label>
-              <input
-                name="skills"
-                value={input.skills || ''}
-                onChange={handleChange}
-                placeholder="Ex: React, Node.js"
-              />
-            </div>
-            <div style={{ marginBottom: 8 }}>
-              <label>Experiência: </label>
-              <input
-                name="experience"
-                value={input.experience || ''}
-                onChange={handleChange}
-                placeholder="Ex: 5 anos"
-              />
-            </div>
-          </>
-        ) : (
+        {isPortfolioGet ? null : (
           <>
             {endpoint.parameters &&
               endpoint.parameters.map((param) => (

@@ -32,6 +32,18 @@ export default function Home() {
     fetchPortfolios();
   }, []);
 
+  // Função para deletar portfólio
+  const handleDelete = async (id: number) => {
+    if (!window.confirm('Tem certeza que deseja excluir este portfólio?')) return;
+    try {
+      const response = await fetch(`/api/portfolios/${id}`, { method: 'DELETE' });
+      if (!response.ok) throw new Error('Erro ao excluir portfólio');
+      setPortfolios((prev) => prev.filter((p) => p.id !== id));
+    } catch (err) {
+      alert('Erro ao excluir portfólio. Tente novamente.');
+    }
+  };
+
   return (
     <>
       <Header />
@@ -44,7 +56,7 @@ export default function Home() {
         ) : (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 32 }}>
             {portfolios.map((portfolio) => (
-              <PortfolioCard key={portfolio.id} portfolio={portfolio} onDelete={() => {}} />
+              <PortfolioCard key={portfolio.id} portfolio={portfolio} onDelete={handleDelete} />
             ))}
           </div>
         )}

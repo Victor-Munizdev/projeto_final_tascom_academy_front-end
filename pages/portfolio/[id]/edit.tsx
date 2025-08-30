@@ -76,18 +76,23 @@ export default function EditPortfolio() {
     try {
       setSaving(true)
       setError(null)
+      const dataToSend = { ...formData, id: id ? Number(id) : undefined };
       const response = await fetch(`/api/portfolios/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(dataToSend)
       })
       if (!response.ok) {
         const errorData = await response.json()
-        throw new Error(errorData.error || `HTTP error! status: ${response.status}`)
+        let errorMsg = errorData.message || errorData.error || `HTTP error! status: ${response.status}`;
+        if (errorData.validationErrors && Array.isArray(errorData.validationErrors)) {
+          errorMsg += '\n' + errorData.validationErrors.map((v: any) => `- ${v.field}: ${v.message}`).join('\n');
+        }
+        throw new Error(errorMsg);
       }
       router.push(`/portfolio/${id}`)
     } catch (error) {
-      setError('Erro ao atualizar portfólio')
+      setError(error instanceof Error ? error.message : 'Erro ao atualizar portfólio')
     } finally {
       setSaving(false)
     }
