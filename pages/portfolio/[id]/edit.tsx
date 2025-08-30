@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import Header from "../../../src/components/Header"
-import { maskPhoneBR } from "../../../src/utils/maskPhoneBR"
+
 
 interface Portfolio {
   id: number
@@ -64,7 +64,7 @@ export default function EditPortfolio() {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
-    setFormData(prev => ({ ...prev, [name]: name === 'phone' ? maskPhoneBR(value) : value }))
+  setFormData(prev => ({ ...prev, [name]: value }))
   }
 
   const handleSubmit = async (e: React.FormEvent) => {

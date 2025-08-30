@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { portfolioService } from '../../../src/services/portfolioService'
-import { executeGuards, readGuards } from '../../../src/utils/guards'
+
 
 /**
  * @swagger
@@ -70,12 +70,7 @@ import { executeGuards, readGuards } from '../../../src/utils/guards'
  */
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    // Executar guards para leitura
-    const guardsPassed = await executeGuards(req, res, readGuards)
-    
-    if (!guardsPassed) {
-      return
-    }
+
 
     if (req.method === 'GET') {
       // Buscar estatísticas

@@ -1,6 +1,8 @@
+
 import { useState } from "react"
 import { useRouter } from "next/router"
-import { maskPhoneBR } from "../src/utils/maskPhoneBR"
+import Header from "../src/components/Header"
+
 
 export default function PortfolioForm() {
   const [name, setName] = useState("")
@@ -50,56 +52,58 @@ export default function PortfolioForm() {
       setIsSubmitting(false)
     }
   }
-
   return (
-    <div className="container">
-      <div className="form-header">
-        <h1>Novo Portfólio</h1>
-        <p>Preencha as informações abaixo para criar seu portfólio</p>
+    <>
+      <Header />
+      <div className="container">
+        <div className="form-header">
+          <h1 style={{ color: '#18181b' }}>Novo Portfólio</h1>
+          <p style={{ color: '#23232b' }}>Preencha as informações abaixo para criar seu portfólio</p>
+        </div>
+        <form onSubmit={handleSubmit} className="portfolio-form">
+          <div className="form-section">
+            <h3>Informações Pessoais</h3>
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="name">Nome *</label>
+                <input id="name" value={name} onChange={e => setName(e.target.value)} placeholder="Seu nome completo" required />
+              </div>
+              <div className="form-group">
+                <label htmlFor="email">Email</label>
+                <input id="email" type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="seu@email.com" />
+              </div>
+            </div>
+            <div className="form-group">
+              <label htmlFor="phone">Telefone</label>
+              <input id="phone" type="tel" value={phone} onChange={e => setPhone(e.target.value)} placeholder="(11) 99999-9999" maxLength={15} style={{ maxWidth: 220, padding: '8px' }} />
+            </div>
+          </div>
+          <div className="form-section">
+            <h3>Informações Profissionais</h3>
+            <div className="form-group">
+              <label htmlFor="description">Descrição Profissional</label>
+              <textarea id="description" value={description} onChange={e => setDescription(e.target.value)} placeholder="Descreva brevemente seu perfil profissional..." rows={4} />
+            </div>
+            <div className="form-group">
+              <label htmlFor="skills">Habilidades *</label>
+              <textarea id="skills" value={skills} onChange={e => setSkills(e.target.value)} placeholder="Ex: JavaScript, React, Node.js, Python (separadas por vírgula)" required rows={3} />
+              <small>Separe as habilidades por vírgula</small>
+            </div>
+            <div className="form-group">
+              <label htmlFor="experience">Experiência Profissional</label>
+              <textarea id="experience" value={experience} onChange={e => setExperience(e.target.value)} placeholder="Descreva sua experiência profissional..." rows={5} />
+            </div>
+            <div className="form-group">
+              <label htmlFor="education">Formação Acadêmica</label>
+              <textarea id="education" value={education} onChange={e => setEducation(e.target.value)} placeholder="Descreva sua formação acadêmica..." rows={4} />
+            </div>
+          </div>
+          <div className="form-actions">
+            <button type="button" onClick={() => router.push("/")} disabled={isSubmitting} className="btn-outline">Cancelar</button>
+            <button type="submit" disabled={isSubmitting} className="btn-primary">{isSubmitting ? "Salvando..." : "Salvar"}</button>
+          </div>
+        </form>
       </div>
-      <form onSubmit={handleSubmit} className="portfolio-form">
-        <div className="form-section">
-          <h3>Informações Pessoais</h3>
-          <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="name">Nome *</label>
-              <input id="name" value={name} onChange={e => setName(e.target.value)} placeholder="Seu nome completo" required />
-            </div>
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input id="email" type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="seu@email.com" />
-            </div>
-          </div>
-          <div className="form-group">
-            <label htmlFor="phone">Telefone</label>
-            <input id="phone" type="tel" value={phone} onChange={e => setPhone(maskPhoneBR(e.target.value))} placeholder="(11) 99999-9999" maxLength={15} />
-          </div>
-        </div>
-        <div className="form-section">
-          <h3>Informações Profissionais</h3>
-          <div className="form-group">
-            <label htmlFor="description">Descrição Profissional</label>
-            <textarea id="description" value={description} onChange={e => setDescription(e.target.value)} placeholder="Descreva brevemente seu perfil profissional..." rows={4} />
-          </div>
-          <div className="form-group">
-            <label htmlFor="skills">Habilidades *</label>
-            <textarea id="skills" value={skills} onChange={e => setSkills(e.target.value)} placeholder="Ex: JavaScript, React, Node.js, Python (separadas por vírgula)" required rows={3} />
-            <small>Separe as habilidades por vírgula</small>
-          </div>
-          <div className="form-group">
-            <label htmlFor="experience">Experiência Profissional</label>
-            <textarea id="experience" value={experience} onChange={e => setExperience(e.target.value)} placeholder="Descreva sua experiência profissional..." rows={5} />
-          </div>
-          <div className="form-group">
-            <label htmlFor="education">Formação Acadêmica</label>
-            <textarea id="education" value={education} onChange={e => setEducation(e.target.value)} placeholder="Descreva sua formação acadêmica..." rows={4} />
-          </div>
-        </div>
-        <div className="form-actions">
-          <button type="button" onClick={() => router.push("/")} disabled={isSubmitting} className="btn-outline">Cancelar</button>
-          <button type="submit" disabled={isSubmitting} className="btn-primary">{isSubmitting ? "Salvando..." : "Salvar"}</button>
-        </div>
-      </form>
-    </div>
+    </>
   )
 }

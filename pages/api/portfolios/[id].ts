@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { portfolioService } from '../../../src/services/portfolioService'
-import { executeGuards, writeGuards, readGuards } from '../../../src/utils/guards'
 import { CreatePortfolioDto } from '../../../src/types/dto'
 
 /**
@@ -186,13 +185,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       })
     }
 
-    // Executar guards baseados no método
-    const guards = req.method === 'GET' ? readGuards : writeGuards
-    const guardsPassed = await executeGuards(req, res, guards)
-    
-    if (!guardsPassed) {
-      return
-    }
+
 
     if (req.method === 'GET') {
       // Buscar portfólio por ID

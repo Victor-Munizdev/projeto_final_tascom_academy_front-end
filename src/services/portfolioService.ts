@@ -9,7 +9,7 @@ import {
   ApiResponseDto,
   ApiErrorResponseDto
 } from '../types/dto'
-import { validateCreatePortfolio, validateUpdatePortfolio, sanitizePortfolioData, isValidId } from '../utils/validators'
+
 
 export class PortfolioService {
   private static instance: PortfolioService
@@ -96,9 +96,7 @@ export class PortfolioService {
   // Buscar portfólio por ID
   async getPortfolioById(id: number): Promise<ApiResponseDto<PortfolioResponseDto>> {
     try {
-      if (!isValidId(id)) {
-        throw new Error('ID inválido')
-      }
+
 
       const { data, error } = await supabase
         .from('portfolios')
@@ -123,17 +121,11 @@ export class PortfolioService {
   async createPortfolio(portfolioData: CreatePortfolioDto): Promise<ApiResponseDto<PortfolioResponseDto>> {
     try {
       // Sanitizar dados
-      const sanitizedData = sanitizePortfolioData(portfolioData)
 
-      // Validar dados
-      const validationErrors = validateCreatePortfolio(sanitizedData)
-      if (validationErrors.length > 0) {
-        throw new Error('Dados inválidos')
-      }
 
       const { data, error } = await supabase
         .from('portfolios')
-        .insert([sanitizedData])
+        .insert([portfolioData])
         .select()
         .single()
 
@@ -150,22 +142,10 @@ export class PortfolioService {
   // Atualizar portfólio
   async updatePortfolio(id: number, portfolioData: Partial<CreatePortfolioDto>): Promise<ApiResponseDto<PortfolioResponseDto>> {
     try {
-      if (!isValidId(id)) {
-        throw new Error('ID inválido')
-      }
+
 
       // Sanitizar dados
-      const sanitizedData = sanitizePortfolioData(portfolioData)
-
-      // Validar dados
-      const validationData = { id, ...sanitizedData }
-      const validationErrors = validateUpdatePortfolio(validationData)
-      if (validationErrors.length > 0) {
-        console.error('Erros de validação ao atualizar portfólio:', validationErrors)
-        const error = new Error('Dados inválidos') as any;
-        error.validationErrors = validationErrors;
-        throw error;
-      }
+  // Validações removidas
 
       // Verificar se o portfólio existe
       const existingPortfolio = await this.getPortfolioById(id)
@@ -175,7 +155,7 @@ export class PortfolioService {
 
       const { data, error } = await supabase
         .from('portfolios')
-        .update(sanitizedData)
+        .update(portfolioData)
         .eq('id', id)
         .select()
         .single()
@@ -193,9 +173,7 @@ export class PortfolioService {
   // Deletar portfólio
   async deletePortfolio(id: number): Promise<ApiResponseDto<{ message: string }>> {
     try {
-      if (!isValidId(id)) {
-        throw new Error('ID inválido')
-      }
+
 
       // Verificar se o portfólio existe
       const existingPortfolio = await this.getPortfolioById(id)
